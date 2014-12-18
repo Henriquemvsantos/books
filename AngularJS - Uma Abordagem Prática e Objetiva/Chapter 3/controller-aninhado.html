@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+  <meta charset="UTF-8">
+  <title>Controller aninhado</title>
+  <link rel="stylesheet" href="assets/bootstrap/dist/css/bootstrap.css">
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12" ng-controller="CarroController">
+        <strong>[CarroController]</strong> Tipo: {{type}} - Nome: {{name}}
+        <div ng-controller="FuscaController">
+          <strong>[FuscaController]</strong> Tipo: {{type}} - Nome: {{name}}
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="assets/jquery/dist/jquery.js"></script>
+  <script src="assets/bootstrap/dist/js/bootstrap.js"></script>
+  <script src="assets/angularjs/angular.js"></script>
+  <script>
+    (function(){
+      angular.module('myApp', [])
+        .controller('CarroController', ['$scope', function($scope){
+          $scope.type = 'Carro';
+          $scope.name = 'Carro';
+        }])
+        .controller('FuscaController', ['$scope', function($scope){
+          $scope.name = 'Fusca';
+        }]);
+    }());
+  </script>
+</body>
+</html>
